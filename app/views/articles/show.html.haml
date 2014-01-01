@@ -1,4 +1,7 @@
-author: 
+%strong author: 
 = @author_email
-%p= @article.title
-= @article.text
+%br
+%strong= @article.title
+%br
+%br
+= simple_format @article.text
