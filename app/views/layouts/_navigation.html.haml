@@ -7,6 +7,12 @@
         %span.icon-bar
         %span.icon-bar
       = link_to 'Home', root_path, class: 'navbar-brand'
+      - if user_signed_in?
+        .navbar-brand= current_user.email
+        = link_to 'Sign out', destroy_user_session_path, class: 'navbar-brand', method: :delete
+        /TODO: show user links: create article, edit acc, etc...
+      -else
+        = link_to 'Sign in', new_user_session_path, class: 'navbar-brand'
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         = render 'layouts/navigation_links'
