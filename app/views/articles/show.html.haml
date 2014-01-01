@@ -3,5 +3,9 @@
 %br
 %strong= @article.title
 %br
+tags: 
+- @article.tags.split(" ").each do |tag|
+  = link_to tag, articles_path(tag: tag)
+%br
 %br
 = simple_format @article.text

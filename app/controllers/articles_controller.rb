@@ -2,7 +2,12 @@ class ArticlesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
   def index
-    @articles = Article.all
+    if params.has_key?(:tag)
+      @articles = Article.find_by_sql("SELECT * FROM articles WHERE tags LIKE '%#{params[:tag]}%'")
+      @tag = params[:tag]
+    else
+      @articles = Article.all
+    end
   end
 
   def show
@@ -21,7 +26,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(user_id: current_user.id, title: params[:article][:title], text: params[:article][:text])
+    @article = Article.new(user_id: current_user.id, title: params[:article][:title], text: params[:article][:text], tags: params[:article][:tags])
     if @article.save
       redirect_to @article
     else

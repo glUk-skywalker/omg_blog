@@ -1,3 +1,10 @@
+- if @tag
+  filtered by tag:
+  = link_to @tag, articles_path(tag: @tag)
+  |
+  = link_to 'remove filter', articles_path
+%br
+%br
 - @articles.each do |article|
   %p
     = link_to article.title, article_path(article)

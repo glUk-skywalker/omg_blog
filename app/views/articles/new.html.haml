@@ -1,6 +1,8 @@
 = form_for @article do |f|
   = f.text_field :title, size: 50
   %br
+  = f.text_field :tags, size: 50, placeholder: "list of tags delimited with whitespaces"
+  %br
   = f.text_area :text, size: "100x20"
   %br
   = f.submit "Publish article!"
