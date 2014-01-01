@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_filter :authenticate_user!, only: [:new, :edit]
+
   def index
     @articles = Article.all
   end
@@ -13,6 +15,4 @@ class ArticlesController < ApplicationController
       redirect_to root_path
     end
   end
-
-  
 end
