@@ -10,6 +10,7 @@
       - if user_signed_in?
         .navbar-brand= current_user.email
         = link_to 'Sign out', destroy_user_session_path, class: 'navbar-brand', method: :delete
+        = link_to 'Write article', new_article_path, class: 'navbar-brand'
         /TODO: show user links: create article, edit acc, etc...
       -else
         = link_to 'Sign in', new_user_session_path, class: 'navbar-brand'
