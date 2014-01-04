@@ -4,6 +4,12 @@
   |
   = link_to 'remove filter', articles_path
 %br
+- if @author
+  filtered by author:
+  = link_to @author, articles_path(author: @author)
+  |
+  = link_to 'remove filter', articles_path
+%br
 %br
 - @articles.each do |article|
   %p

@@ -5,6 +5,9 @@ class ArticlesController < ApplicationController
     if params.has_key?(:tag)
       @articles = Article.find_by_sql("SELECT * FROM articles WHERE tags LIKE '%#{params[:tag]}%'")
       @tag = params[:tag]
+    elsif params.has_key?(:author)
+      @articles = Article.where(user_id: User.find_by(email: params[:author]))
+      @author = params[:author]
     else
       @articles = Article.all
     end

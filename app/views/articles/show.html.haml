@@ -1,9 +1,12 @@
 %strong author: 
-= @author_email
+= link_to @author_email, articles_path(author: @author_email)
 %br
 %strong= @article.title
 %br
-tags: 
+%strong posted at:
+= @article.created_at
+%br
+%strong tags: 
 - @article.tags.split(" ").each do |tag|
   = link_to tag, articles_path(tag: tag)
 %br
