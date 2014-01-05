@@ -1,0 +1,9 @@
+- @article.comments.each do |comment|
+  .comment
+    - if comment.user
+      = link_to comment.user.email, articles_path(author: comment.user.email)
+    - else
+      %strong Anonimous
+    comment:
+    %br
+    = comment.text

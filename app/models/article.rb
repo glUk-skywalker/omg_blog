@@ -4,4 +4,5 @@ class Article < ActiveRecord::Base
   validates :text, presence: true, length: { minimum: 30 }
 
   belongs_to :user
+  has_many :comments
 end

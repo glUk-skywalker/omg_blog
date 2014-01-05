@@ -1,7 +1,8 @@
-%strong author: 
-= link_to @author_email, articles_path(author: @author_email)
+%strong
+  %font{ size: '6' }= @article.title
 %br
-%strong= @article.title
+%strong author: 
+= link_to @article.user.email, articles_path(author: @article.user.email)
 %br
 %strong posted at:
 = @article.created_at
@@ -12,3 +13,10 @@
 %br
 %br
 = simple_format @article.text
+
+.new_comment
+  =render 'comments/new'
+
+.comments
+  =render 'comments/index'
+  

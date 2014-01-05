@@ -1,0 +1,4 @@
+= form_for @comment do |f|
+  = f.hidden_field :article_id, value: @article.id
+  = f.text_area :text, size: "100x2"
+  = f.submit 'post comment'

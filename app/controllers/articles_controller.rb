@@ -16,8 +16,7 @@ class ArticlesController < ApplicationController
   def show
     begin
       @article = Article.find(params[:id])
-      user = @article.user
-      user ? @author_email = user.email : @author_email = 'unknown'
+      @comment = Comment.new
     rescue ActiveRecord::RecordNotFound => e
       flash[:notice] = 'No such article'
       redirect_to root_path
